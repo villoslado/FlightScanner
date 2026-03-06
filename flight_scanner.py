@@ -12,16 +12,16 @@ load_dotenv()
 # ── Config ────────────────────────────────────────────────────────────────────
 
 ORIGIN      = "SEA"
-DESTINATION = "BCN"
+DESTINATION = "FCO"
 CURRENCY    = "USD"
 ADULTS      = 1
 DB_PATH     = "flights.db"
 LOG_PATH    = "deals.log"
 
-SCAN_FROM = "2026-07-01"  # start date (inclusive)
-SCAN_TO   = "2026-08-31"  # end date (inclusive)
+SCAN_FROM = "2026-10-01"  # start date (inclusive)
+SCAN_TO   = "2026-12-31"  # end date (inclusive)
 
-DEAL_THRESHOLD_PCT  = 0.05  # 5% below average = a deal
+DEAL_THRESHOLD_PCT  = 0.10  # 10% below average = a deal
 POLL_INTERVAL_HOURS = 6
 
 # ── Logging ───────────────────────────────────────────────────────────────────
@@ -126,7 +126,7 @@ def fetch_fares(client, origin, destination, depart_date):
             adults=ADULTS,
             currencyCode=CURRENCY,
             max=5,
-            nonStop="true",
+            nonStop="false",
         )
         results = []
         for offer in response.data:
